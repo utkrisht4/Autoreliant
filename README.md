@@ -15,3 +15,5 @@ pytest
 ### Generate report
 
 pytest --html=reports/report.html
+
+![Tests](https://github.com/utkrisht4/Autoreliant/actions/workflows/tests.yml/badge.svg)
