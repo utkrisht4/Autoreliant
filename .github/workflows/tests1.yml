@@ -28,8 +28,8 @@ jobs:
     # 4️⃣ Start FastAPI server
     - name: Start FastAPI server
       run: |
-        uvicorn api:app --host 127.0.0.1 --port 8000 &
-        sleep 5
+        uvicorn utils.api:app --host 127.0.0.1 --port 8000 &
+        sleep 8
 
     # 5️⃣ Run tests
     - name: Run tests
