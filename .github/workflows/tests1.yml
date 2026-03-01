@@ -1,0 +1,36 @@
+name: Run FastAPI Tests
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    # 1️⃣ Get repo code
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    # 2️⃣ Install Python
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: "3.11"
+
+    # 3️⃣ Install dependencies
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt
+
+    # 4️⃣ Start FastAPI server
+    - name: Start FastAPI server
+      run: |
+        uvicorn api:app --host 127.0.0.1 --port 8000 &
+        sleep 5
+
+    # 5️⃣ Run tests
+    - name: Run tests
+      run: pytest tests/test_local_api.py
